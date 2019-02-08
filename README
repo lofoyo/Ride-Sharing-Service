@@ -1,0 +1,35 @@
+1.	Create a user account
+	First webpage you will see is the Register page. You can create an account with a username, an email address and a valid password. 
+
+2.	Login with a valid user account
+	You cannot log into the system if your username and password do not match.
+
+3.	Choose your role
+	As a user, you can choose from three roles: Owner, Sharer and Driver. You can change your role at any time by clicking “Change Role”. 
+
+4.	Logout from a user session
+	You can go to profile webpage and logout from the current account by clicking the dropdown at the upper right corner.
+
+5.	Profile page
+	Different roles have different profile display. You can edit your profile through the button on the profile page. If you are a Driver, you can also view and edit your vehicle information through buttons on the profile page. By clicking the “Ride Sharing Service” at the upper left corner, you can go to the profile page.
+
+6.	Vehicle registration
+	If your current role is a Driver, you can register only one vehicle by clicking "Drivers Only" -> "Register My Vehicle". 
+
+7.	Submit a ride request
+	If your current role is a Owner, you can create a new ride request by clicking "Request Rides" -> "Create a New Request". 
+
+8.	View your ride list
+	By clicking “My Rides”, you can see a list of all rides related to you. In this page, you can edit a ride request which is not been shared or confirmed. Also, you can view the details of shared, confirmed and completed rides.
+
+9.	Edit a ride request
+	If your current role is a Owner, you can edit a ride request which is not been shared or confirmed by clicking "Request Rides" -> "Edit My Request". 
+
+10.	Search sharable rides
+	If you are a Sharer, you can find rides which are suitable to join by clicking "Create a New Share Request" and then go to "Search Rides". All the open rides meeting your requirements will show on the “Search Rides” page. 
+
+11.	Search open requests
+	If you are a Driver, you can find open ride requests fitting your vehicle by clicking "Drivers Only" -> "Search Rides". You can confirm the rides you want by clicking the "Confirm".
+
+12.	Driver’s ride list
+	A driver is able to see a list of their confirmed rides by going to "My Rides". You can view details of your confirmed ride and then click "Complete" to finish the ride.

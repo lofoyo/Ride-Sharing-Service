@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+    <br/>
+    <br/>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome! User {{ user.username }}</h1>
+        <p class="lead">In this ride sharing service system, you can choose from three roles: Owner, Sharer and Driver.</p>
+        <hr class="my-4">
+        {% if Rolename == "Owner" %}
+            <p>Click "Request Rides" -> "Create a New Request" to begin your new journey!</p>
+        {% elif Rolename == "Sharer" %}
+            <p>Click "Create a New Share Request" and then go to "Search Rides" to find the rides you can join!</p>
+        {% else %}
+            <p>To register your vehicle: "Drivers Only" -> "Register My Vehicle"</p>
+            <p>To find the rides fit your vehicle: "Drivers Only" -> "Search Rides"</p>
+        {% endif %}
+            <a class="btn btn-primary" href="{% url 'update-profile' user.id %}" role="button">Edit My Profile</a>
+    <br/>
+    <br/>
+        {% if Rolename == "Driver" %}
+            {% if Vehicle.driver %}
+            <a class="btn btn-primary" href="{% url 'vehicle-edit' Vehicle.id  %}" role="button">Edit My Registered Vehicle</a>
+                {% endif %}
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                View My Registered Vehicle
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="form-group">
+                        <h3> Registered Vehicle</h3>
+                        <label>Driver</label>
+                        <p class="form-control-static"> {{ Vehicle.driver}}</p>
+                        <label>Capacity</label>
+                        <p class="form-control-static"> {{ Vehicle.capacity}}</p>
+                        <label>Plate_number</label>
+                        <p class="form-control-static"> {{ Vehicle.plate_number}}</p>
+                        <label>Vehicle Type</label>
+                        <p class="form-control-static"> {{ Vehicle.type}}</p>
+                        <label>Special Information</label>
+                        <p class="form-control-static"> {{ Vehicle.special}}</p>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+
+    </div>
+
+
+    <!-- /#wrapper -->
+
+
+
+
+{% endblock %}
+
+
+
+
+

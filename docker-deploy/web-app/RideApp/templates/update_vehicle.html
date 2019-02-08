@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Edit My Vehicle{% endblock %}
+{% block content %}
+
+    <h2 class="page-header">Edit My Vehicle</h2>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Vehicle Information
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <form method="POST">
+                            <div>{% csrf_token %}
+                                {{ form.as_p}}
+                            </div>
+                            <div>
+                                <button type="submit">Submit</button>
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+    </div>
+
+{% endblock %}

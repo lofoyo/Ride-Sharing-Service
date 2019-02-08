@@ -1,0 +1,20 @@
+Danger Log
+
+1. After the user registers, he/she should choose a role according to the instruction before he/she do anthing else. Otherwise, he/she will get an error page for almost all the possible requests.
+
+2. One ride can only have one sharer! The ride will automatically close after one sharer join in. Also, sharer can not quit the ride or update any information of the ride.
+
+The reason why we decide to make things go like this is to avoid too many people share one ride so that no vehicle can hold all of them. 
+
+However, this may be improved by reorganizing the database structure. We can create different ride models: owner-ride, sharer-ride and driver-ride. They all have a foreign key pointing to a ride object and another foreign key pointing to one user. In this way, we can have many sharer inside one ride and it will be easier to get owner's and sharers' personal information and ride information. Also, we can ask owner to set the maximum people inside his/her ride. When the total passenger number reach that value, the ride should be close for sharing.
+
+3. Multiple users can login to one account. Please check your username to avoid any unexpected result.
+
+4. One driver may confirm an open ride even if driver's vehicle does not fit the ride's requirement through url. This may cause "problem".
+
+5. Similarly, a sharer can join a public(sharable) ride even if they cannot fit each other. This can cause "problem"
+
+6. Please pay attention that users' password can not be changed, only email update is allowed.
+
+7. If you try to do something that is not allowed by normal logic and regulation when you are logged in, you may be logged out automatically. 
+If you try to do something that can only be completed by authenticated logged in user, you will be asked to login.

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Register My Vehicle{% endblock %}
+{% block content %}
+
+    <h2 class="page-header">Register My Vehicle</h2>
+
+
+    <form method="POST">
+        {% if error %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+        {% endif %}
+    {% if success %}
+            <div class="alert alert-success">
+                <strong>{{ success }}</strong>
+            </div>
+        {% endif %}
+        <div>{% csrf_token %}
+            {{ form.as_p}}
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+
+        </div>
+    </form>
+{% endblock %}

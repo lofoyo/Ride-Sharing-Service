@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Ride Detail{% endblock %}
+{% block content %}
+
+    <h2 class="page-header">Ride Detail</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Destinations: {{ ride.destination }}</li>
+        <li class="list-group-item">Arrival time: {{ ride.arrival_time }}</li>
+        <li class="list-group-item">Passenger Number: {{ ride.passenger_number }}</li>
+        <li class="list-group-item">
+            Passengers:
+            {% for person in ride.passengers.all %}
+                {{ person.username }}
+            {% endfor %}
+        </li>
+        <li class="list-group-item">Vehicle Type: {{ ride.vehicle_type }}</li>
+     
+        {% for person in ride.passengers.all %}
+            {% if person.username == ride.owner %}
+                <br/>
+	        <h4>Owner</h4>
+                <li class="list-group-item">Owner Username: {{ person.username}}</li>
+                <li class="list-group-item">Owner Email: {{ person.email}}</li>
+                <li class="list-group-item">Owner Passenger Number: {{ ride.owner_number }}</li>
+            {% else %}
+                <br/>
+                <h4>Sharer</h4>
+                <li class="list-group-item">Sharer Username: {{ person.username}}</li>
+                <li class="list-group-item">Sharer Email: {{ person.email}}</li>
+                <li class="list-group-item">Sharer Passenger Number: {{ ride.sharer_number }}</li>
+
+            {% endif %}
+
+
+
+        {% endfor %}
+
+
+
+
+
+        {% if ride.status.name == "confirmed" %}
+            <br/>
+            <h4>Driver</h4>
+            <li class="list-group-item">Driver Username: {{ driver.username }}</li>
+            <li class="list-group-item">Driver Email: {{ driver.email }}</li>
+            <li class="list-group-item">Driver's Vehicle Type: {{ driver.vehicle.type }}</li>
+            <li class="list-group-item">Driver's Vehicle Plate Number: {{ driver.vehicle.plate_number }}</li>
+            <li class="list-group-item">Driver's Vehicle Capacity: {{ driver.vehicle.capacity }}</li>
+
+
+        {% endif %}
+        {% if ride.status.name == "completed" %}
+            <br/>
+            <h4>Driver</h4>
+            <li class="list-group-item">Driver Username: {{ driver.username }}</li>
+            <li class="list-group-item">Driver Email: {{ driver.email }}</li>
+            <li class="list-group-item">Driver's Vehicle Type: {{ driver.vehicle.type }}</li>
+            <li class="list-group-item">Driver's Vehicle Plate Number: {{ driver.vehicle.plate_number }}</li>
+            <li class="list-group-item">Driver's Vehicle Capacity: {{ driver.vehicle.capacity }}</li>
+
+
+        {% endif %}
+        <br/>
+        {% if ride.status.name == "public" %}
+            <li class="list-group-item">Share Status: Open for share</li>
+        {% else %}
+            <li class="list-group-item">Share Status: Not open for share</li>
+        {% endif %}
+        {% if ride.status.name == "public" %}
+            <li class="list-group-item">Ride Status: Pending</li>
+        {% elif ride.status.name == "private" %}
+            <li class="list-group-item">Ride Status: Pending</li>
+        {% elif ride.status.name == "shared" %}
+            <li class="list-group-item">Ride Status: Pending</li>
+        {% elif ride.status.name == "confirmed" %}
+            <li class="list-group-item">Ride Status: Confirmed</li>
+        {% elif ride.status.name == "completed" %}
+            <li class="list-group-item">Ride Status: Completed</li>
+        {% endif %}
+        <li class="list-group-item">Special: {{ ride.special }}</li>
+
+        {% if ride.owner == user.username %}
+            {% if ride.status.name == "public" %}
+                <br/>
+                <button type="button"><a href="{% url 'ride-edit' ride.id %}">Edit</a></button>
+            {% elif ride.status.name == "private" %}
+                <br/>
+                <button type="button"><a href="{% url 'ride-edit' ride.id %}">Edit</a></button>
+            {% endif %}
+
+        {% endif %}
+        {% if ride.driver == user.username %}
+            {% if ride.status.name == "confirmed"%}
+                <br/>
+                <button type="button"><a href="{% url 'ride-complete' ride.id %}">Complete</a></button>
+            {% endif %}
+        {% endif %}
+
+
+
+
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
