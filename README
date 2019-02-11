@@ -1,11 +1,6 @@
 This is a course project of ECE568 (Engineering Robust Server Software). My coworker is Xinyi Gong.
-
-
 The system's description and requirements can be found in hw1.pdf.
-
-
 You can run this system by deploying the docker container. 
-
 
 Following is how to use this Ride Sharing Service System:
 1.	Create a user account
